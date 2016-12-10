@@ -7,20 +7,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentWebView.OnWebViewFragmentInteractionListener} interface
+ * {@link FragmentThreatLevel.OnThreatLevelFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentWebView#newInstance} factory method to
+ * Use the {@link FragmentThreatLevel#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentWebView extends Fragment {
+public class FragmentThreatLevel extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,11 +27,9 @@ public class FragmentWebView extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    WebView webView;
+    private OnThreatLevelFragmentInteractionListener mListener;
 
-    private OnWebViewFragmentInteractionListener mListener;
-
-    public FragmentWebView() {
+    public FragmentThreatLevel() {
         // Required empty public constructor
     }
 
@@ -44,11 +39,11 @@ public class FragmentWebView extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentWebView.
+     * @return A new instance of fragment FragmentThreatLevel.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentWebView newInstance(String param1, String param2) {
-        FragmentWebView fragment = new FragmentWebView();
+    public static FragmentThreatLevel newInstance(String param1, String param2) {
+        FragmentThreatLevel fragment = new FragmentThreatLevel();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,23 +58,13 @@ public class FragmentWebView extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_web_view, container, false);
-
-        WebView webView = (WebView) view.findViewById(R.id.content_webview);
-
-        webView.setWebViewClient(new WebViewClient());
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        webView.loadUrl("http://happy-holiday.s3-website-ap-southeast-2.amazonaws.com/travelapi.html");
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_threat_level, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -92,8 +77,8 @@ public class FragmentWebView extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnWebViewFragmentInteractionListener) {
-            mListener = (OnWebViewFragmentInteractionListener) context;
+        if (context instanceof OnThreatLevelFragmentInteractionListener) {
+            mListener = (OnThreatLevelFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -116,7 +101,7 @@ public class FragmentWebView extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnWebViewFragmentInteractionListener {
+    public interface OnThreatLevelFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }

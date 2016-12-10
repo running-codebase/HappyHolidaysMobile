@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentWebView.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentThreatLevel.OnThreatLevelFragmentInteractionListener, FragmentWebView.OnWebViewFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +58,26 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = FragmentWebView.newInstance("1", "2");
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-//                .add(fragment, "webview")
                 .replace(R.id.content_frame, fragment)
                 .commit();
+    }
+
+    private void goToThreatLevelFragment() {
+        Fragment fragment = FragmentThreatLevel.newInstance("1", "2");
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .commit();
+
+    }
+
+    private void goToSettingsFragment() {
+        Fragment fragment = FragmentWebView.newInstance("1", "2");
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .commit();
+
     }
 
 
@@ -101,16 +118,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Create a new fragment and specify the planet to show based on position
-
-
-
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_manage) {
-
+        if (id == R.id.nav_advisories) {
+            goToWebViewFragment();
+        } else if (id == R.id.nav_threat_level) {
+            goToThreatLevelFragment();
+        } else if (id == R.id.nav_settings) {
+            goToSettingsFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
