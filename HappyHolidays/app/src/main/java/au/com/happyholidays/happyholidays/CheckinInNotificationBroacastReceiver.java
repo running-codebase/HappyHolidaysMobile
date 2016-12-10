@@ -39,4 +39,8 @@ public class CheckinInNotificationBroacastReceiver extends BroadcastReceiver
         am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), Util.dayInMilliseconds(), pi);
     }
 
+    public void dismissNotification() {
+
+    }
+
 }
