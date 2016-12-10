@@ -1,10 +1,12 @@
 package au.com.happyholidays.happyholidays;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -41,8 +43,14 @@ public class MainActivity extends AppCompatActivity
 
         UserDataTrackerBroadcastReceiver br = new UserDataTrackerBroadcastReceiver(this);
 
-        WebApi.dropPin(this);
 
+        int PERMISSION_ALL = 1;
+        String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION};
+
+        if(!AndroidPermissions.hasPermissions(this, PERMISSIONS)){
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
+        }
 
     }
 
