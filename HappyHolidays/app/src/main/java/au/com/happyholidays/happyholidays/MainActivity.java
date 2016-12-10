@@ -39,14 +39,15 @@ public class MainActivity extends AppCompatActivity
 
         goToWebViewFragment();
 
+        UserDataTrackerBroadcastReceiver br = new UserDataTrackerBroadcastReceiver(this);
+
+        WebApi.dropPin(this);
+
+
     }
 
     private void goToWebViewFragment() {
         Fragment fragment = FragmentWebView.newInstance("1", "2");
-//            Bundle args = new Bundle();
-//            args.putInt(Frag, position);
-//            fragment.setArguments(args);
-
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
 //                .add(fragment, "webview")

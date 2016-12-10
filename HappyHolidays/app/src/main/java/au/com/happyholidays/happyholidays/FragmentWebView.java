@@ -78,10 +78,7 @@ public class FragmentWebView extends Fragment {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        webView.loadUrl("https://i.chzbgr.com/full/7918724352/h9273B558/");
-
-
-        // Inflate the layout for this fragment
+        webView.loadUrl("http://happy-holiday.s3-website-ap-southeast-2.amazonaws.com/travelapi.html");
         return view;
     }
 
