@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="au.com.happyholidays.happyholidays">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,14 +23,10 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="UserDataTrackerBroadcastReceiver" >
-        </receiver>
+        <receiver android:name=".UserDataTrackerBroadcastReceiver" />
+        <receiver android:name=".CheckinInNotificationBroacastReceiver" />
 
-
+        <activity android:name=".PinActivity" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
 
 </manifest>

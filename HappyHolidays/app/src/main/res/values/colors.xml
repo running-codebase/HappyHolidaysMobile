@@ -9,6 +9,9 @@
     <color name="offWhite">#EBF2FA</color>
     <color name="darkGreen">#679436</color>
     <color name="lightGreen">#A5BE00</color>
+    <color name="darkGrey">#555555</color>
+
+    <color name="black">#000000</color>
 
 
 </resources>

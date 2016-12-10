@@ -4,12 +4,14 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_advisories"
-            android:icon="@drawable/ic_whatshot_3x"
-            android:title="Local Advisories" />
-        <item
-            android:id="@+id/nav_threat_level"
             android:icon="@drawable/ic_announcement_18pt_3x"
-            android:title="Threat Level" />
+            android:title="Local Advisories" />
+
+        <!--android:icon="@drawable/ic_whatshot_3x"-->
+        <!--<item-->
+            <!--android:id="@+id/nav_threat_level"-->
+            <!--android:icon="@drawable/ic_announcement_18pt_3x"-->
+            <!--android:title="Threat Level" />-->
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"

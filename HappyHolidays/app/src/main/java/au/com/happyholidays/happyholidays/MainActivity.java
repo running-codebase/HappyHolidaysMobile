@@ -41,7 +41,10 @@ public class MainActivity extends AppCompatActivity
 
         goToWebViewFragment();
 
-        UserDataTrackerBroadcastReceiver br = new UserDataTrackerBroadcastReceiver(this);
+//        UserDataTrackerBroadcastReceiver br = new UserDataTrackerBroadcastReceiver(this);
+
+        CheckinInNotificationBroacastReceiver checkinInNotificationBroacastReceiver = new CheckinInNotificationBroacastReceiver();
+        checkinInNotificationBroacastReceiver.setAlarm(this);
 
 
         int PERMISSION_ALL = 1;
@@ -120,8 +123,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_advisories) {
             goToWebViewFragment();
-        } else if (id == R.id.nav_threat_level) {
-            goToThreatLevelFragment();
+//        } else if (id == R.id.nav_threat_level) {
+//            goToThreatLevelFragment();
         } else if (id == R.id.nav_settings) {
             goToSettingsFragment();
         }
@@ -133,8 +136,5 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
-        Log.d("TRAVIS", "what does this do?");
-
     }
 }
