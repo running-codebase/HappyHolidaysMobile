@@ -28,22 +28,31 @@ public class PinActivity extends AppCompatActivity {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER && keyEvent.getAction() == KeyEvent.ACTION_UP) {
+
+                    WebApi.dropPin(getApplicationContext(), Double.toString(Util.getLocation(getApplicationContext()).getLatitude()),
+                            Double.toString(Util.getLocation(getApplicationContext()).getLongitude()),
+                            Long.toString(System.currentTimeMillis()));
+
                     createAndShowCheckInDialog();
                 }
                 return false;
             }
         });
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(pinEditText, InputMethodManager.SHOW_IMPLICIT);
     }
 
 
     private void createAndShowCheckInDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Checkin Complete");
+        builder.setTitle("Check In Complete");
         builder.setMessage("You have succesfully checked in. You will be alerted next time you need to check in.")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                        finish();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
                     }
                 });
         // Create the AlertDialog object and return it

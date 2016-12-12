@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offWhite"
-    tools:context="au.com.happyholidays.happyholidays.FragmentThreatLevel">
+    tools:context="au.com.happyholidays.happyholidays.FragmentCheckIn">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -30,27 +30,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <RadioButton
+                    <Button
+                        android:text="Check In Now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/radioButton"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:fontFamily="sans-serif-light"
-                        android:layout_height="wrap_content"
-                        android:layout_width="match_parent"
-                        android:text="Low Risk Situation"
-                        android:textSize="20sp"
+                        android:id="@+id/checkin_btn"
+                        android:textSize="22sp"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_weight="1" />
                 </LinearLayout>
 
-                <TextView
-                    android:fontFamily="sans-serif-light"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:text="@string/low_risk_description"
-                    android:textSize="14sp"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
@@ -71,14 +60,17 @@
                  android:fontFamily="sans-serif-light"
                  android:layout_height="wrap_content"
                  android:layout_width="match_parent"
-                 android:text="High Risk Situation"
-                 android:textSize="20sp"/>
+                 android:text="Checking In Drops a Pin"
+                 android:textSize="20sp"
+                 android:textStyle="normal|bold"
+                 android:textColor="@color/black" />
              <TextView
                  android:fontFamily="sans-serif-light"
                  android:layout_height="wrap_content"
                  android:layout_width="match_parent"
+                 android:layout_marginTop="15dp"
                  android:text="@string/low_risk_description"
-                 android:textSize="14sp"/>
+                 android:textSize="16sp"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

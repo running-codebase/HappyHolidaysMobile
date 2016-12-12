@@ -44,34 +44,11 @@ public class UserDataTrackerBroadcastReceiver extends BroadcastReceiver {
                 Toast.LENGTH_SHORT).show();
 
         Log.d("RECEIVER", "Recieved a broadcast");
-        WebApi.dropPin(context, Double.toString(getLocation(context).getLatitude()),
-                Double.toString(getLocation(context).getLongitude()),
+        WebApi.dropPin(context, Double.toString(Util.getLocation(context).getLatitude()),
+                Double.toString(Util.getLocation(context).getLongitude()),
                 Long.toString(System.currentTimeMillis()));
     }
 
 
-    private Location getLocation(Context context) {
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(context, "Requires Location permission", Toast.LENGTH_LONG);
-            return null;
-        }
 
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        List<String> providers = locationManager.getProviders(true);
-        Location bestLocation = null;
-
-        for (String provider : providers) {
-            Location l = locationManager.getLastKnownLocation(provider);
-            if (l == null) {
-                continue;
-            }
-            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
-                bestLocation = l;
-            }
-        }
-        return bestLocation;
-
-    }
 }

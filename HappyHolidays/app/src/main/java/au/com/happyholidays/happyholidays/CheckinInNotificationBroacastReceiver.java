@@ -26,7 +26,7 @@ public class CheckinInNotificationBroacastReceiver extends BroadcastReceiver
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
         wl.acquire();
 
-        Util.createAlarmNotification(context, "Check in now", "Do it", 84026643);
+        Util.createAlarmNotification(context, "Check In Required", "Privately drop a pin at your current location", 84026643);
 
         wl.release();
     }

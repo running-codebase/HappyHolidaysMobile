@@ -15,7 +15,9 @@ import cz.msebera.android.httpclient.HttpEntity;
 
 public class ServerRestClient {
 
-    private static final String BASE_URL = "http://10.28.0.169:8080/rest/";
+    String IP_ADDRESS = "13.54.67.222";
+
+    private static final String BASE_URL = "http://13.54.67.222:8080/rest/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

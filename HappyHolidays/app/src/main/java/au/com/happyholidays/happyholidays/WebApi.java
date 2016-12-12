@@ -27,7 +27,7 @@ public class WebApi {
             jsonObject.put("time", date);
             StringEntity entity = new StringEntity(jsonObject.toString());
 
-            ServerRestClient.post(context, "location/xavier", entity, "application/json", new AsyncHttpResponseHandler() {
+            ServerRestClient.post(context, "location/jenny", entity, "application/json", new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         Log.d("HappyHolidays", "dropPin: Post Results " + statusCode);

@@ -12,13 +12,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentThreatLevel.OnThreatLevelFragmentInteractionListener, FragmentWebView.OnWebViewFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentCheckIn.OnThreatLevelFragmentInteractionListener, FragmentWebView.OnWebViewFragmentInteractionListener, FragmentSettings.OnSettingsFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
 
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.content_frame);
 
-        goToWebViewFragment();
+        goToCheckInFragment();
 
 //        UserDataTrackerBroadcastReceiver br = new UserDataTrackerBroadcastReceiver(this);
 
@@ -57,6 +57,16 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private void goToCheckInFragment() {
+        Fragment fragment = FragmentCheckIn.newInstance("1", "2");
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .commit();
+
+    }
+
+
     private void goToWebViewFragment() {
         Fragment fragment = FragmentWebView.newInstance("1", "2");
         FragmentManager fragmentManager = getFragmentManager();
@@ -65,17 +75,8 @@ public class MainActivity extends AppCompatActivity
                 .commit();
     }
 
-    private void goToThreatLevelFragment() {
-        Fragment fragment = FragmentThreatLevel.newInstance("1", "2");
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, fragment)
-                .commit();
-
-    }
-
     private void goToSettingsFragment() {
-        Fragment fragment = FragmentWebView.newInstance("1", "2");
+        Fragment fragment = FragmentSettings.newInstance("1", "2");
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, fragment)
@@ -121,10 +122,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_advisories) {
+        if (id == R.id.nav_check_in) {
+            goToCheckInFragment();
+
+        } else if (id == R.id.nav_advisories) {
             goToWebViewFragment();
-//        } else if (id == R.id.nav_threat_level) {
-//            goToThreatLevelFragment();
+
         } else if (id == R.id.nav_settings) {
             goToSettingsFragment();
         }
@@ -137,4 +140,5 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
     }
+
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HappyHolidays</string>
+    <string name="app_name">lokayte</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,8 +9,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="low_risk_description">Low Risk Monitoring uses your phone activity to ensure your safety. As long as you use your phone once every three days your data remains stored securely.</string>
-    <string name="high_risk_description">High Risk Monitoring should be used in potentially dangerous situations. A silent notification will be shown after each present time. Entering your preset pin will be required to check in and maintain your anonymouos pin dropping.</string>
+    <string name="low_risk_description">"Dropping a pin uploads a market with your current time and position to the web.\n\nIn the event that you have not checked in two full days a notification will be sent to your loved ones containing a link to this data. \n\nThis data remains private while you travel and is only released in the event of an emergency. </string>
+
+    <string name="settings_description">"Settings that control the users details." </string>
 
 
 </resources>

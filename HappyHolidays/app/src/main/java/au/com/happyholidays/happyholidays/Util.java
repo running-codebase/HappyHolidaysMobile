@@ -1,14 +1,21 @@
 package au.com.happyholidays.happyholidays;
 
+import android.Manifest;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by tco on 2016-12-10.
@@ -59,6 +66,32 @@ public class Util {
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 //        // mId allows you to update the notification later on.
         mNotificationManager.notify(id, mBuilder.build());
+
+    }
+
+
+    public static Location getLocation(Context context) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(context, "Requires Location permission", Toast.LENGTH_LONG);
+            return null;
+        }
+
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+
+        for (String provider : providers) {
+            Location l = locationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
 
     }
 
